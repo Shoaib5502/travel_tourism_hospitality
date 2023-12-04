@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+ <!-- NavBar -->
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Travel-Learning</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        &nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'bookings' %}">Bookings</a>
+        </li>
+        &nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'courses' %}">Courses</a>
+        </li>
+        &nbsp;&nbsp;
+        <li class="nav-item">
+          {% if user.is_authenticated %}
+          <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">Profile</a>
+          {% else %}
+          <a class="nav-link disabled">Profile</a>
+          {% endif %}
+        </li>
+      </ul>
+        {% if user.is_authenticated %}
+        <a href="accounts/logout"><button class="btn btn-outline-success" type="submit">Log out</button></a>
+        {% else %}
+        <a href="accounts/register"><button class="btn btn-outline-success" type="submit">Join us</button></a>
+        {% endif %}
+        <!--a href="signup"><button class="btn btn-outline-success" type="submit">Join us</button></a-->
+    </div>
+  </div>
+</nav>
+
+    {% if user.is_authenticated %}
+    <br>
+    <h4><p align="center">Hello, {{user.username}} ! Explore variety of courses provided by us</p></h4>
+    <br>
+    {% else %}
+    <br>
+    <h4><p align="center">We provide courses related to travel, tourism and hospitality for Students</p></h4>
+    <br>
+    {% endif %}
+
+    <!-- different courses cards-->
+    <div class="card text-center">
+        <img src="{% static 'images/course-travel.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Travel</h5>
+            <p class="card-text">Courses related to travel.</p>
+            <a href="courses/travel" class="btn btn-primary">See courses</a>
+        </div>
+    </div>
+    <br>
+
+    <div class="card text-center">
+        <img src="{% static 'images/course-tourism.jpeg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Tourism</h5>
+            <p class="card-text">Courses related to tourism.</p>
+            <a href="courses/tourism" class="btn btn-primary">See courses</a>
+        </div>
+    </div>
+    <br>
+
+    <div class="card text-center">
+        <img src="{% static 'images/course-hospitality.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Hospitality</h5>
+            <p class="card-text">Courses related to Hospitality.</p>
+            <a href="courses/hospitality" class="btn btn-primary">See courses</a>
+        </div>
+    </div>
+    <br>
+
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start">
+
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Contact Us :</h5>
+        <p>
+          Phone : xxxxxxxxxx<br>
+          Office : xxxxx - xxxxxx<br>
+          Email : abc@gmail.com<br>
+          Address : xxxxxxxxxxxxxxxxxxxxxx<br>
+          Pincode : xxxxxx
+        </p>
+      </div>
+      <!--Grid column-->
+      <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Go to :
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Home</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Bookings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Courses</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Profile</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+{% endblock %}
